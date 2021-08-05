@@ -9,7 +9,7 @@ class Searchs {
 
   get paramsMapbox() {
     return {
-      access_token: 'Mi Token',
+      access_token: process.env.MAPBOX_KEY,
       limit: 5,
       language: 'es',
     };
