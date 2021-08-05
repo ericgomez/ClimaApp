@@ -8,31 +8,15 @@ const questions = [
     message: '¿What do you want to do?',
     choices: [
       {
-        value: '1', // Valor que representa
-        name: `${'1.'.green} Create homework`, // Datos a mostrar
+        value: 1, // Valor que representa
+        name: `${'1.'.green} Search city`, // Datos a mostrar
       },
       {
-        value: '2', // Valor que representa
-        name: `${'2.'.green} List homework`, // Datos a mostrar
+        value: 2, // Valor que representa
+        name: `${'2.'.green} Record`, // Datos a mostrar
       },
       {
-        value: '3', // Valor que representa
-        name: `${'3.'.green} List homework completed`, // Datos a mostrar
-      },
-      {
-        value: '4', // Valor que representa
-        name: `${'4.'.green} List homework pendent`, // Datos a mostrar
-      },
-      {
-        value: '5', // Valor que representa
-        name: `${'5.'.green} Complete homework(s)`, // Datos a mostrar
-      },
-      {
-        value: '6', // Valor que representa
-        name: `${'6.'.green} Delete homework`, // Datos a mostrar
-      },
-      {
-        value: '0', // Valor que representa
+        value: 0, // Valor que representa
         name: `${'0.'.green} Exit`, // Datos a mostrar
       },
     ],
