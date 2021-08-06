@@ -44,7 +44,7 @@ const main = async () => {
         console.log('¿Weather status?', weather.description.green);
         break;
       case 2:
-        searchs.record.forEach((place, i) => {
+        searchs.recordCapitalized.forEach((place, i) => {
           const idx = `${i + 1}.`.green;
           console.log(`${idx} ${place}`);
         });

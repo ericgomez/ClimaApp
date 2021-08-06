@@ -8,6 +8,16 @@ class Searchs {
 
   constructor() {
     // TODO: Leer DB si existe
+    this.readDB();
+  }
+
+  get recordCapitalized() {
+    return this.record.map((place) => {
+      let words = place.split(' ');
+      words = words.map((p) => p[0].toUpperCase() + p.substring(1));
+
+      return words.join(' ');
+    });
   }
 
   get paramsMapbox() {
@@ -76,6 +86,10 @@ class Searchs {
     if (this.record.includes(place.toLocaleLowerCase())) {
       return;
     }
+
+    // Manetener solo 6 registros
+    this.record = this.record.splice(0, 5);
+
     this.record.unshift(place.toLocaleLowerCase());
 
     // Grabar en DB
@@ -90,7 +104,14 @@ class Searchs {
     fs.writeFileSync(this.dbPath, JSON.stringify(payload));
   }
 
-  readDB() {}
+  readDB() {
+    if (!fs.existsSync(this.dbPath)) return;
+
+    const info = fs.readFileSync(this.dbPath, { encoding: 'utf8' });
+    const data = JSON.parse(info);
+
+    this.record = data.record;
+  }
 }
 
 module.exports = Searchs;
