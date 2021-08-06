@@ -24,15 +24,18 @@ const main = async () => {
         const placeSelected = places.find((l) => l.id === id);
 
         // Clima
+        const weather = await searchs.weatherPlace(placeSelected.lat, placeSelected.lng);
 
         // Mostrar resultados
+        console.clear();
         console.log('\nInformation city'.green);
-        console.log('City:', placeSelected.name);
+        console.log('City:', placeSelected.name.green);
         console.log('Lat:', placeSelected.lat);
         console.log('Lng:', placeSelected.lng);
-        console.log('Temperature:');
-        console.log('Minimum:');
-        console.log('Maximum:');
+        console.log('Temperature:', weather.temp);
+        console.log('Minimum:', weather.min);
+        console.log('Maximum:', weather.max);
+        console.log('¿Weather status?', weather.description.green);
         break;
       case 2:
         break;
