@@ -21,7 +21,13 @@ const main = async () => {
 
         // Selecionar lugares
         const id = await listPlaces(places);
+
+        if (id === '0') continue;
+
         const placeSelected = places.find((l) => l.id === id);
+
+        // Guardar Registro
+        searchs.addRecord(placeSelected.name);
 
         // Clima
         const weather = await searchs.weatherPlace(placeSelected.lat, placeSelected.lng);
@@ -38,6 +44,10 @@ const main = async () => {
         console.log('¿Weather status?', weather.description.green);
         break;
       case 2:
+        searchs.record.forEach((place, i) => {
+          const idx = `${i + 1}.`.green;
+          console.log(`${idx} ${place}`);
+        });
         break;
     }
     if (opt !== 0) await pause();

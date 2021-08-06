@@ -1,7 +1,10 @@
+const fs = require('fs');
+
 const axios = require('axios');
 
 class Searchs {
-  record = ['Tegucigalpa', 'Madrid', 'San José'];
+  record = [];
+  dbPath = './db/database.json';
 
   constructor() {
     // TODO: Leer DB si existe
@@ -67,6 +70,27 @@ class Searchs {
       console.log(error);
     }
   }
+
+  addRecord(place = '') {
+    // TODO: prevenir duplicados
+    if (this.record.includes(place.toLocaleLowerCase())) {
+      return;
+    }
+    this.record.unshift(place.toLocaleLowerCase());
+
+    // Grabar en DB
+    this.saveDB();
+  }
+
+  saveDB() {
+    const payload = {
+      record: this.record,
+    };
+
+    fs.writeFileSync(this.dbPath, JSON.stringify(payload));
+  }
+
+  readDB() {}
 }
 
 module.exports = Searchs;
